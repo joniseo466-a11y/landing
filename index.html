@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juan RPM | Mentoría YouTube con IA</title>
-    <meta name="description" content="Mentoría 1 a 1 para crear canales de YouTube rentables con inteligencia artificial. Récord de monetización en 9 días.">
+    <meta name="description" content="Mentoría 1 a 1 para crear canales de YouTube rentables con inteligencia artificial. +80 alumnos monetizados.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <style>
@@ -463,14 +463,89 @@
         .as-num { font-family: 'JetBrains Mono', monospace; font-size: 1.3rem; font-weight: 700; color: var(--blue); }
         .as-lbl { font-size: 0.72rem; color: var(--text-soft); margin-top: 2px; }
 
-        /* ========== PRICING ========== */
+        /* ========== COMPARISON TABLE ========== */
+        .compare-wrap {
+            max-width: 660px;
+            margin: 0 auto 48px;
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 12px var(--shadow);
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+
+        .compare-table thead th {
+            padding: 16px 20px;
+            font-weight: 700;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .compare-table thead th:first-child {
+            background: var(--bg-alt);
+            text-align: left;
+            color: var(--text-soft);
+        }
+
+        .compare-table thead th:nth-child(2) {
+            background: #FEE2E2;
+            color: #B91C1C;
+        }
+
+        .compare-table thead th:nth-child(3) {
+            background: var(--green-bg);
+            color: var(--green);
+            border-left: 2px solid var(--green);
+        }
+
+        .compare-table tbody td {
+            padding: 13px 20px;
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-card);
+        }
+
+        .compare-table tbody td:first-child {
+            font-weight: 600;
+            color: var(--text);
+            background: var(--bg-alt);
+        }
+
+        .compare-table tbody td:nth-child(2) {
+            color: var(--text-soft);
+            text-align: center;
+        }
+
+        .compare-table tbody td:nth-child(3) {
+            color: var(--green);
+            font-weight: 600;
+            text-align: center;
+            border-left: 2px solid var(--green-border);
+        }
+
+        .compare-table tbody tr:last-child td { border-bottom: none; }
+
+        .compare-no { color: #B91C1C; font-weight: 600; }
+        .compare-yes { color: var(--green); font-weight: 700; }
+
+        @media (max-width: 768px) {
+            .compare-table { font-size: 0.78rem; }
+            .compare-table thead th, .compare-table tbody td { padding: 10px 12px; }
+        }
+
+        /* ========== PRICING UPDATED ========== */
         .price-sec { background: var(--bg-alt); position: relative; }
 
         .price-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-            gap: 22px;
-            max-width: 740px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            max-width: 960px;
             margin: 0 auto;
         }
 
@@ -478,7 +553,7 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 18px;
-            padding: 34px;
+            padding: 28px 22px;
             text-align: center;
             transition: all 0.3s;
             box-shadow: 0 2px 12px var(--shadow);
@@ -516,6 +591,8 @@
         .pc-price .c { font-size: 1.3rem; vertical-align: top; margin-right: 2px; }
         .pc-price .p { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 400; color: var(--text-soft); }
 
+        .pc-price .old { font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 400; color: var(--text-muted); text-decoration: line-through; display: block; margin-bottom: -4px; }
+
         .pc-save {
             background: var(--green-bg);
             color: var(--green);
@@ -544,7 +621,36 @@
             margin-top: 12px;
         }
 
-        /* Secondary btn style for quarterly */
+        .pc-transform {
+            background: var(--green-bg);
+            border: 1px solid var(--green-border);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .pc-transform-title {
+            font-weight: 700;
+            font-size: 0.82rem;
+            color: var(--green);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pc-transform-item {
+            font-size: 0.85rem;
+            color: var(--text-mid);
+            padding: 4px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 7px;
+        }
+
+        .pc-transform-item .ar { color: var(--green); font-weight: 700; }
+
+        /* Secondary btn style for VIP */
         .btn-outline {
             display: inline-flex;
             align-items: center;
@@ -632,6 +738,40 @@
         .footer p { font-size: 0.74rem; color: var(--text-soft); }
 
         /* ========== ANIMATIONS ========== */
+
+        /* ========== PAIN POINTS ========== */
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 18px;
+            margin-top: 36px;
+        }
+
+        .pain-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s;
+            box-shadow: 0 2px 12px var(--shadow);
+            border-left: 3px solid var(--blue);
+        }
+
+        .pain-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px var(--shadow-hover); }
+
+        .pain-card .pain-emoji { font-size: 1.8rem; margin-bottom: 12px; }
+        .pain-card .pain-title { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--text); margin-bottom: 8px; }
+        .pain-card .pain-text { font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; }
+
+        .pain-remate {
+            text-align: center;
+            margin-top: 36px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--blue-deep);
+        }
+
+        /* ========== ANIMATIONS (original) ========== */
         @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
         @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
@@ -650,13 +790,20 @@
             .about-grid { grid-template-columns: 1fr; text-align: center; }
             .about-img { max-width: 260px; margin: 0 auto; }
             .testi-grid, .feat-grid { grid-template-columns: 1fr; }
-            .price-cards { grid-template-columns: 1fr; max-width: 380px; }
+            .price-cards { grid-template-columns: 1fr; max-width: 400px; }
+            .pc { padding: 24px; }
             .pc.pop { transform: none; }
             .pc.pop:hover { transform: translateY(-3px); }
             .sec { padding: 64px 20px; }
             .about-stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
             .sticky-cta { display: block; }
             body { padding-bottom: 72px; }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .price-cards { max-width: 900px; gap: 12px; }
+            .pc { padding: 20px 14px; }
+            .pc-feat { font-size: 0.82rem; }
         }
     </style>
 </head>
@@ -666,7 +813,7 @@
 <nav class="nav">
     <div class="nav-inner">
         <a href="#" class="nav-brand">Juan <span>RPM</span></a>
-        <a href="#precio" class="nav-cta">Empezar Mentoría →</a>
+        <a href="#precio" class="nav-cta">Ver precio →</a>
     </div>
 </nav>
 
@@ -678,26 +825,26 @@
                 <span class="dot"></span>
                 Plazas limitadas — Mentoría activa
             </div>
-            <h1>Crea canales de YouTube <em>rentables con IA</em> y genera ingresos reales</h1>
-            <p class="hero-sub">Mentoría 1 a 1 donde te llevo de la mano para construir, optimizar y monetizar tu canal. Sin teoría genérica — solo estrategia real que funciona.</p>
+            <h1>¿Tu canal no crece, tus ingresos bajan o <em>no sabes por dónde empezar?</em></h1>
+            <p class="hero-sub">Te llevo de la mano para crear, arreglar o escalar tu canal de YouTube con IA. Sin teoría genérica — estrategia real basada en +80 alumnos monetizados.</p>
 
             <div class="trust-row">
                 <div>
-                    <div class="trust-num">9 días</div>
-                    <div class="trust-label">Récord monetización</div>
+                    <div class="trust-num">+80</div>
+                    <div class="trust-label">Alumnos monetizados</div>
                 </div>
                 <div>
                     <div class="trust-num">+3 años</div>
                     <div class="trust-label">De experiencia</div>
                 </div>
                 <div>
-                    <div class="trust-num">+50</div>
-                    <div class="trust-label">Canales creados</div>
+                    <div class="trust-num">1 a 1</div>
+                    <div class="trust-label">Mentoría directa</div>
                 </div>
             </div>
 
             <div class="hero-cta">
-                <a href="#precio" class="btn">Quiero mi mentoría →</a>
+                <a href="#precio" class="btn">Quiero que mi canal empiece a dar dinero →</a>
                 <div class="btn-sub">🔒 Pago seguro · Sin permanencia · Cancela cuando quieras</div>
             </div>
         </div>
@@ -716,8 +863,8 @@
             <div class="fl fl-badge">
                 <div class="ic">✓</div>
                 <div>
-                    <div class="t">Monetizado</div>
-                    <div class="s">en 9 días</div>
+                    <div class="t">Canal</div>
+                    <div class="s">monetizado</div>
                 </div>
             </div>
         </div>
@@ -727,44 +874,135 @@
 <!-- SCROLLING TICKER -->
 <div class="ticker-wrap">
     <div class="ticker">
-        <div class="ticker-item"><span class="num">+50</span> canales creados</div>
-        <div class="ticker-item"><span class="sep">✦</span></div>
-        <div class="ticker-item"><span class="num">9 días</span> récord monetización</div>
+        <div class="ticker-item"><span class="num">+80</span> alumnos monetizados</div>
         <div class="ticker-item"><span class="sep">✦</span></div>
         <div class="ticker-item"><span class="num">+3 años</span> de experiencia</div>
         <div class="ticker-item"><span class="sep">✦</span></div>
         <div class="ticker-item"><span class="num">100%</span> alumnos satisfechos</div>
         <div class="ticker-item"><span class="sep">✦</span></div>
-        <div class="ticker-item"><span class="num">10+</span> alumnos activos</div>
+        <div class="ticker-item"><span class="num">€177</span> /mes sin permanencia</div>
         <div class="ticker-item"><span class="sep">✦</span></div>
-        <div class="ticker-item"><span class="num">€100</span> /mes sin permanencia</div>
+        <div class="ticker-item"><span class="num">2</span> clases en vivo al mes</div>
         <div class="ticker-item"><span class="sep">✦</span></div>
-        <div class="ticker-item"><span class="num">+50</span> canales creados</div>
+        <div class="ticker-item"><span class="num">1 a 1</span> mentoría directa</div>
         <div class="ticker-item"><span class="sep">✦</span></div>
-        <div class="ticker-item"><span class="num">9 días</span> récord monetización</div>
+        <div class="ticker-item"><span class="num">+80</span> alumnos monetizados</div>
         <div class="ticker-item"><span class="sep">✦</span></div>
         <div class="ticker-item"><span class="num">+3 años</span> de experiencia</div>
         <div class="ticker-item"><span class="sep">✦</span></div>
         <div class="ticker-item"><span class="num">100%</span> alumnos satisfechos</div>
         <div class="ticker-item"><span class="sep">✦</span></div>
-        <div class="ticker-item"><span class="num">10+</span> alumnos activos</div>
+        <div class="ticker-item"><span class="num">€177</span> /mes sin permanencia</div>
         <div class="ticker-item"><span class="sep">✦</span></div>
-        <div class="ticker-item"><span class="num">€100</span> /mes sin permanencia</div>
+        <div class="ticker-item"><span class="num">2</span> clases en vivo al mes</div>
+        <div class="ticker-item"><span class="sep">✦</span></div>
+        <div class="ticker-item"><span class="num">1 a 1</span> mentoría directa</div>
         <div class="ticker-item"><span class="sep">✦</span></div>
     </div>
 </div>
+
+<!-- PAIN POINTS — ¿Te suena esto? -->
+<section class="sec">
+    <div class="sec-inner">
+        <div style="text-align:center;">
+            <div class="sec-label" style="justify-content:center;">¿Te suena esto?</div>
+            <h2>Si estás aquí, probablemente estás en una de estas situaciones</h2>
+        </div>
+        <div class="pain-grid">
+            <div class="pain-card reveal">
+                <div class="pain-emoji">😶</div>
+                <div class="pain-title">Subes vídeos, pero YouTube te ignora</div>
+                <div class="pain-text">Llevas semanas o meses publicando y apenas tienes vistas. Ves canales con peor contenido que el tuyo creciendo, y no entiendes qué haces mal. Cada vídeo que subes sin estrategia es tiempo que no vuelve.</div>
+            </div>
+            <div class="pain-card reveal">
+                <div class="pain-emoji">📉</div>
+                <div class="pain-title">Tu canal iba bien, pero de repente cayó</div>
+                <div class="pain-text">Las vistas bajan, los ingresos caen y no sabes qué ha cambiado. El algoritmo se movió y tú te quedaste atrás. Cada semana sin reaccionar, tu canal se hunde un poco más.</div>
+            </div>
+            <div class="pain-card reveal">
+                <div class="pain-emoji">🤷</div>
+                <div class="pain-title">Quieres empezar pero no sabes cómo</div>
+                <div class="pain-text">Ves a gente generando dinero con YouTube y IA, pero sientes que es demasiado complicado o que ya llegas tarde. Mientras lo piensas, otros que saben menos que tú ya están cobrando su primer cheque de AdSense.</div>
+            </div>
+        </div>
+        <p class="pain-remate reveal">Si estás en alguna de estas situaciones, esta mentoría es exactamente lo que necesitas.</p>
+    </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="sec">
+    <div class="sec-inner" style="text-align:center;">
+        <div class="sec-label" style="justify-content:center;">Compara</div>
+        <h2>¿Cuánto pagan otros por menos?</h2>
+        <p class="sec-desc" style="margin:0 auto 32px; text-align:center;">Mira lo que ofrecen otras mentorías y lo que ofrezco yo por una fracción del precio.</p>
+
+        <div class="compare-wrap reveal">
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Otras mentorías</th>
+                        <th>Juan RPM</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Precio</td>
+                        <td class="compare-no">€1.500 de golpe</td>
+                        <td class="compare-yes">€177/mes</td>
+                    </tr>
+                    <tr>
+                        <td>Videollamadas</td>
+                        <td>4 al año (si tienes suerte)</td>
+                        <td class="compare-yes">2 al mes (24 al año)</td>
+                    </tr>
+                    <tr>
+                        <td>Seguimiento por chat</td>
+                        <td>Te contesta una automatización de WhatsApp</td>
+                        <td class="compare-yes">Hablas conmigo a diario por Discord</td>
+                    </tr>
+                    <tr>
+                        <td>Revisión de canal</td>
+                        <td class="compare-no">No incluida</td>
+                        <td class="compare-yes">Diagnóstico completo</td>
+                    </tr>
+                    <tr>
+                        <td>Automatización con IA</td>
+                        <td class="compare-no">No incluida</td>
+                        <td class="compare-yes">Incluida</td>
+                    </tr>
+                    <tr>
+                        <td>Alumnos monetizados</td>
+                        <td>No lo dicen</td>
+                        <td class="compare-yes">+80 alumnos</td>
+                    </tr>
+                    <tr>
+                        <td>Ebook de estrategia</td>
+                        <td class="compare-no">No incluido</td>
+                        <td class="compare-yes">Incluido</td>
+                    </tr>
+                    <tr>
+                        <td>Compromiso</td>
+                        <td class="compare-no">€1.500 de golpe</td>
+                        <td class="compare-yes">Sin permanencia, cancela y retoma cuando quieras</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
 
 <!-- TESTIMONIALS -->
 <section class="sec">
     <div class="sec-inner">
         <div class="sec-label">Resultados reales</div>
-        <h2>Lo que dicen mis alumnos</h2>
-        <p class="sec-desc">No me creas a mí. Mira los resultados que han conseguido ellos.</p>
+        <h2>Ellos estaban en tu misma situación</h2>
+        <p class="sec-desc">No me creas a mí. Mira lo que han conseguido personas que estaban exactamente donde tú estás ahora.</p>
         <div class="testi-grid">
             <div class="tc feat reveal">
                 <div class="tc-stars">★★★★★</div>
                 <div class="tc-result">✓ Canal monetizado en 3 semanas</div>
-                <p class="tc-text">"Llevaba meses intentando monetizar por mi cuenta. Con Juan en 3 semanas ya estaba generando ingresos. La estrategia de nichos fue un cambio total."</p>
+                <p class="tc-text">"Llevaba 4 meses subiendo vídeos con 20 vistas. Juan me cambió los títulos, el nicho y la estrategia de miniaturas. En 3 semanas estaba monetizado."</p>
                 <div class="tc-author">
                     <div class="tc-av">MA</div>
                     <div><div class="tc-name">Miguel A.</div><div class="tc-info">Canal de audiobooks · España</div></div>
@@ -772,8 +1010,8 @@
             </div>
             <div class="tc reveal">
                 <div class="tc-stars">★★★★★</div>
-                <div class="tc-result">✓ De €0 a €800/mes en 2 meses</div>
-                <p class="tc-text">"Juan te dice exactamente qué hacer. Me analizó el canal, me dio los cambios y en 2 meses ya generaba €800/mes. Directo y sin rodeos."</p>
+                <div class="tc-result">✓ De €150/mes a €800/mes en 2 meses</div>
+                <p class="tc-text">"Mi canal pasó de €600/mes a €150 y no entendía por qué. Juan lo analizó, me dijo exactamente qué cambiar y en 2 meses volví a €800. Sin él seguiría en caída libre."</p>
                 <div class="tc-author">
                     <div class="tc-av">CR</div>
                     <div><div class="tc-name">Carlos R.</div><div class="tc-info">Canal faceless · México</div></div>
@@ -781,11 +1019,11 @@
             </div>
             <div class="tc reveal">
                 <div class="tc-stars">★★★★★</div>
-                <div class="tc-result">✓ 3 canales monetizados</div>
-                <p class="tc-text">"Aprendí a escalar. Ya no es un solo canal, tengo 3 funcionando. El seguimiento diario por chat es lo que marca la diferencia."</p>
+                <div class="tc-result">✓ Primer canal monetizado sin experiencia</div>
+                <p class="tc-text">"No sabía ni qué era un editor de vídeo. Juan me enseñó desde cero con IA y en 6 semanas tenía mi primer canal monetizado sin mostrar la cara. Ahora es mi ingreso extra al trabajo."</p>
                 <div class="tc-author">
                     <div class="tc-av">LP</div>
-                    <div><div class="tc-name">Laura P.</div><div class="tc-info">3 canales con IA · Colombia</div></div>
+                    <div><div class="tc-name">Laura P.</div><div class="tc-info">Canal con IA desde cero · Colombia</div></div>
                 </div>
             </div>
         </div>
@@ -796,15 +1034,15 @@
 <section class="sec feat-sec">
     <div class="sec-inner">
         <div class="sec-label">Qué incluye</div>
-        <h2>Todo lo que vas a conseguir</h2>
-        <p class="sec-desc">No es un curso grabado. Es mentoría real, personalizada a tu canal.</p>
+        <h2>Todo lo que necesitas para que tu canal funcione</h2>
+        <p class="sec-desc">No es un curso grabado que nadie responde. Es mentoría real, personalizada a tu canal y tu situación.</p>
         <div class="feat-grid">
-            <div class="fc reveal"><div class="fc-icon">📹</div><div class="fc-title">Sesión 1 a 1 en videollamada</div><div class="fc-desc">60-90 minutos conmigo trabajando directamente sobre TU canal con estrategia personalizada.</div></div>
-            <div class="fc reveal"><div class="fc-icon">🔍</div><div class="fc-title">Revisión completa de tu canal</div><div class="fc-desc">Analizo contenidos, títulos, miniaturas y retención. Te digo exactamente qué cambiar.</div></div>
-            <div class="fc reveal"><div class="fc-icon">🚀</div><div class="fc-title">Estrategia de monetización</div><div class="fc-desc">Plan paso a paso para monetizar rápido. Los mismos métodos que uso en mis canales.</div></div>
-            <div class="fc reveal"><div class="fc-icon">🤖</div><div class="fc-title">Automatización con IA</div><div class="fc-desc">Crea contenido automatizado con IA. Produce más, en menos tiempo, con mejor calidad.</div></div>
-            <div class="fc reveal"><div class="fc-icon">💬</div><div class="fc-title">Seguimiento diario por chat</div><div class="fc-desc">Acceso directo a mí todos los días. Resuelves dudas al instante, nunca te quedas bloqueado.</div></div>
-            <div class="fc reveal"><div class="fc-icon">🎁</div><div class="fc-title">Ebook de regalo</div><div class="fc-desc">Mi guía completa para monetizar en un mes. El mismo método validado con +50 canales.</div></div>
+            <div class="fc reveal"><div class="fc-icon">📹</div><div class="fc-title">2 videollamadas en vivo al mes</div><div class="fc-desc">Sesiones conmigo en directo trabajando sobre TU canal. Nada de teoría genérica — hablamos de tu nicho, tus vídeos y tu estrategia.</div></div>
+            <div class="fc reveal"><div class="fc-icon">🔍</div><div class="fc-title">Diagnóstico completo de tu canal</div><div class="fc-desc">Analizo por qué no creces: contenidos, títulos, miniaturas, retención y SEO. Te digo exactamente qué cambiar y en qué orden.</div></div>
+            <div class="fc reveal"><div class="fc-icon">🚀</div><div class="fc-title">Plan de monetización paso a paso</div><div class="fc-desc">El mismo sistema que uso en mis canales. Sin rodeos — sabrás qué hacer cada semana para llegar a monetización lo más rápido posible.</div></div>
+            <div class="fc reveal"><div class="fc-icon">🤖</div><div class="fc-title">Automatización con IA</div><div class="fc-desc">Te enseño a crear contenido con IA aunque nunca hayas tocado estas herramientas. Produce más vídeos, en menos tiempo, con mejor calidad.</div></div>
+            <div class="fc reveal"><div class="fc-icon">💬</div><div class="fc-title">Seguimiento diario por chat</div><div class="fc-desc">Acceso directo a mí todos los días. ¿Tienes una duda a las 10 de la noche? Me escribes y te respondo. Nunca te quedas bloqueado.</div></div>
+            <div class="fc reveal"><div class="fc-icon">🎁</div><div class="fc-title">Ebook de regalo (valorado en €29)</div><div class="fc-desc">Mi guía completa para monetizar en un mes. El mismo método validado con +80 alumnos que recibes desde el primer día.</div></div>
         </div>
     </div>
 </section>
@@ -822,12 +1060,12 @@
             <div>
                 <div class="sec-label">Sobre mí</div>
                 <h2>Soy Juan RPM</h2>
-                <p class="about-text">Llevo más de 3 años creando y monetizando canales de YouTube con inteligencia artificial. He construido más de 50 canales, y mi récord personal es monetizar uno en solo 9 días.</p>
-                <p class="about-text">No soy un gurú que vende humo. Soy un creador activo que sigue creando canales cada día. Todo lo que te enseño es lo que yo mismo hago y me funciona.</p>
-                <p class="about-text">Creé esta mentoría porque estaba cansado de ver gente perdida con canales muertos, siguiendo consejos genéricos que no funcionan. Aquí trabajamos con datos, estrategia y con IA.</p>
+                <p class="about-text">Yo también empecé con un canal que nadie veía. Subí más de 100 vídeos antes de entender qué funcionaba. Perdí meses haciendo lo que todos dicen que hay que hacer — y no funciona.</p>
+                <p class="about-text">Cuando entendí cómo piensa el algoritmo y lo combiné con inteligencia artificial, todo cambió. Ahora llevo más de 3 años creando canales rentables y he ayudado a más de 80 alumnos a monetizar los suyos.</p>
+                <p class="about-text">Creé esta mentoría porque estaba cansado de ver gente perdida con canales muertos, siguiendo consejos genéricos de YouTube. Aquí no hay teoría — hay estrategia real, datos y resultados.</p>
                 <div class="about-stats">
-                    <div class="as"><div class="as-num">+50</div><div class="as-lbl">Canales</div></div>
-                    <div class="as"><div class="as-num">9 días</div><div class="as-lbl">Récord</div></div>
+                    <div class="as"><div class="as-num">+80</div><div class="as-lbl">Monetizados</div></div>
+                    <div class="as"><div class="as-num">1 a 1</div><div class="as-lbl">Personalizado</div></div>
                     <div class="as"><div class="as-num">+3 años</div><div class="as-lbl">Experiencia</div></div>
                 </div>
             </div>
@@ -838,39 +1076,65 @@
 <!-- PRICING -->
 <section class="sec price-sec" id="precio">
     <div class="sec-inner" style="text-align:center;">
-        <div class="sec-label" style="justify-content:center;">Precio</div>
-        <h2>Invierte en tu futuro como creador</h2>
-        <p class="sec-desc" style="margin:0 auto 40px; text-align:center;">Sin permanencia. Elige el plan que mejor se adapte a ti.</p>
+        <div class="sec-label" style="justify-content:center;">Elige tu plan</div>
+        <h2>Menos de lo que pierdes cada mes sin estrategia</h2>
+        <p class="sec-desc" style="margin:0 auto 40px; text-align:center;">Sin permanencia — cancela cuando quieras.</p>
 
         <div class="price-cards">
-            <div class="pc pop reveal">
-                <div class="pc-label">Pago mensual</div>
-                <div class="pc-price" style="color:var(--green);"><span class="c">€</span>100<span class="p" style="color:var(--text-soft);">/mes</span></div>
-                <div class="pc-desc">Paga mes a mes, sin compromisos.</div>
+
+            <!-- TIER 1: SEÑUELO -->
+            <div class="pc reveal">
+                <div class="pc-label">Plan Inicio</div>
+                <div class="pc-price"><span class="c">€</span>97<span class="p" style="color:var(--text-soft);">/mes</span></div>
+                <div class="pc-desc">Para empezar con lo básico.</div>
                 <div class="pc-feats">
-                    <div class="pc-feat"><span class="ck">✓</span><span>Sesiones 1 a 1 en videollamada</span></div>
-                    <div class="pc-feat"><span class="ck">✓</span><span>Revisión completa de tu canal</span></div>
-                    <div class="pc-feat"><span class="ck">✓</span><span>Estrategia de monetización personalizada</span></div>
-                    <div class="pc-feat"><span class="ck">✓</span><span>Automatización con IA</span></div>
-                    <div class="pc-feat"><span class="ck">✓</span><span>Seguimiento diario por chat</span></div>
-                    <div class="pc-feat"><span class="ck">✓</span><span>Ebook de regalo valorado en €29</span></div>
+                    <div class="pc-feat"><span class="ck">✓</span><span>1 videollamada al mes</span></div>
+                    <div class="pc-feat"><span class="ck">✓</span><span>Chat en horario limitado</span></div>
+                    <div class="pc-feat"><span class="ck">✓</span><span>Guía de monetización básica</span></div>
+                    <div class="pc-feat"><span class="ck">✓</span><span>Automatización con IA básica</span></div>
+                    <div class="pc-feat" style="opacity:0.45;"><span style="color:#B91C1C;">✗</span><span>Sin análisis de tu competencia</span></div>
+                    <div class="pc-feat" style="opacity:0.45;"><span style="color:#B91C1C;">✗</span><span>Sin enseñarte a elegir vídeos ganadores</span></div>
                 </div>
-                <a href="https://payhip.com/order?link=XSR19&pricing_plan=3ZGX8ZO5Gq" class="btn btn-green" style="width:100%;">Quiero empezar mi mentoría →</a>
+                <a href="https://payhip.com/order?link=XSR19&pricing_plan=3ZGX8ZO5Gq" class="btn-outline">Elegir Plan Inicio →</a>
                 <div class="pc-trust">🔒 Pago seguro con PayPal o tarjeta</div>
             </div>
 
-            <div class="pc reveal">
-                <div class="pc-label">Pago trimestral</div>
-                <div class="pc-price"><span class="c">€</span>249</div>
-                <div class="pc-save">Ahorras €51 — 3 meses al precio de 2.5</div>
-                <div class="pc-desc">Para los que van en serio.</div>
+            <!-- TIER 2: TARGET -->
+            <div class="pc pop reveal">
+                <div class="pc-label">Plan Mentoría</div>
+                <div class="pc-price" style="color:var(--green);"><span class="old">€297/mes</span><span class="c">€</span>177<span class="p" style="color:var(--text-soft);">/mes</span></div>
+                <div class="pc-save">Ahorras €120/mes — Precio de lanzamiento</div>
+                <div class="pc-desc">Lo que el 90% de alumnos elige.</div>
                 <div class="pc-feats">
-                    <div class="pc-feat"><span class="ck">✓</span><span>Todo lo del plan mensual</span></div>
-                    <div class="pc-feat"><span class="ck">✓</span><span>3 meses de acceso garantizado</span></div>
-                    <div class="pc-feat"><span class="ck">✓</span><span>Sesión extra de estrategia avanzada</span></div>
-                    <div class="pc-feat"><span class="ck">✓</span><span>Acceso prioritario por WhatsApp</span></div>
+                    <div class="pc-feat"><span class="ck">✓</span><span><strong>2 videollamadas en vivo al mes</strong></span></div>
+                    <div class="pc-feat"><span class="ck">✓</span><span><strong>Seguimiento diario por chat 1 a 1</strong></span></div>
+                    <div class="pc-feat"><span class="ck">✓</span><span>Diagnóstico completo de tu canal</span></div>
+                    <div class="pc-feat"><span class="ck">✓</span><span>Estrategia de monetización personalizada</span></div>
+                    <div class="pc-feat"><span class="ck">✓</span><span>Automatización con IA paso a paso</span></div>
+                    <div class="pc-feat"><span class="ck">✓</span><span>Análisis de tu competencia</span></div>
+                    <div class="pc-feat"><span class="ck">✓</span><span>Te enseño a elegir vídeos ganadores</span></div>
+                    <div class="pc-feat"><span class="ck">✓</span><span>Ebook "Monetiza en un mes" (valor €29)</span></div>
+                    <div class="pc-feat"><span class="ck">✓</span><span>Sin permanencia — cancela cuando quieras</span></div>
                 </div>
-                <a href="https://payhip.com/order?link=XSR19&pricing_plan=3ZGX8ZO5Gq" class="btn-outline">Elegir plan trimestral →</a>
+                <a href="https://payhip.com/order?link=XSR19&pricing_plan=3ZGX8ZO5Gq" class="btn btn-green" style="width:100%;">Quiero que mi canal empiece a dar dinero →</a>
+                <div class="pc-trust">🔒 Pago seguro con PayPal o tarjeta</div>
+            </div>
+
+            <!-- TIER 3: ANCLA -->
+            <div class="pc reveal">
+                <div class="pc-label">Plan VIP</div>
+                <div class="pc-price"><span class="old">€397/mes</span><span class="c">€</span>297<span class="p" style="color:var(--text-soft);">/mes</span></div>
+                <div class="pc-save">Ahorras €100/mes — Para resultados máximos</div>
+                <div class="pc-desc">Atención casi exclusiva y escalado.</div>
+                <div class="pc-feats">
+                    <div class="pc-feat"><span class="ck">✓</span><span><strong>Todo lo del Plan Mentoría</strong></span></div>
+                    <div class="pc-feat"><span class="ck">✓</span><span><strong>4 videollamadas al mes</strong> (1 por semana)</span></div>
+                    <div class="pc-feat"><span class="ck">✓</span><span>Acceso a mis herramientas para encontrar nichos rentables y gestionar canales</span></div>
+                    <div class="pc-feat"><span class="ck">✓</span><span>Análisis mensual de competencia de tu nicho</span></div>
+                    <div class="pc-feat"><span class="ck">✓</span><span>Estrategia de escalado a múltiples canales</span></div>
+                    <div class="pc-feat"><span class="ck">✓</span><span>Prioridad absoluta (respuesta en menos de 2h)</span></div>
+                </div>
+                <a href="https://payhip.com/order?link=XSR19&pricing_plan=3ZGX8ZO5Gq" class="btn-outline">Elegir Plan VIP →</a>
                 <div class="pc-trust">🔒 Pago seguro con PayPal o tarjeta</div>
             </div>
         </div>
@@ -881,16 +1145,16 @@
 <section class="sec">
     <div class="sec-inner">
         <div style="text-align:center;">
-            <div class="sec-label" style="justify-content:center;">Preguntas frecuentes</div>
-            <h2 style="max-width:460px; margin:0 auto 40px;">Resolvemos tus dudas</h2>
+            <div class="sec-label" style="justify-content:center;">Antes de decidir</div>
+            <h2 style="max-width:460px; margin:0 auto 40px;">Seguro que tienes estas dudas</h2>
         </div>
         <div class="faq-list">
-            <div class="faq-item"><div class="faq-q"><span>¿Necesito experiencia previa en YouTube?</span><span class="arr">+</span></div><div class="faq-a"><p>No. La mentoría funciona tanto para principiantes como para personas con canal. Empezamos desde tu nivel actual.</p></div></div>
-            <div class="faq-item"><div class="faq-q"><span>¿Cuánto tiempo hasta ver resultados?</span><span class="arr">+</span></div><div class="faq-a"><p>Depende de tu constancia, pero mis alumnos suelen ver resultados en 2-4 semanas. Mi récord es monetizar un canal en 9 días.</p></div></div>
-            <div class="faq-item"><div class="faq-q"><span>¿Tengo que mostrar mi cara en los vídeos?</span><span class="arr">+</span></div><div class="faq-a"><p>No. La mayoría de canales que creamos son faceless. Usamos IA para generar contenido automatizado.</p></div></div>
-            <div class="faq-item"><div class="faq-q"><span>¿Puedo cancelar en cualquier momento?</span><span class="arr">+</span></div><div class="faq-a"><p>Sí. No hay permanencia. Cancelas tu suscripción cuando quieras sin ningún coste adicional.</p></div></div>
-            <div class="faq-item"><div class="faq-q"><span>¿Cómo son las sesiones?</span><span class="arr">+</span></div><div class="faq-a"><p>Por videollamada, de 60 a 90 minutos. Trabajamos sobre tu canal con estrategias personalizadas, más seguimiento diario por chat.</p></div></div>
-            <div class="faq-item"><div class="faq-q"><span>¿Qué herramientas de IA se usan?</span><span class="arr">+</span></div><div class="faq-a"><p>Te enseño las mejores herramientas para crear contenido automatizado: guiones, voces, imágenes, edición y publicación.</p></div></div>
+            <div class="faq-item"><div class="faq-q"><span>No tengo experiencia técnica, ¿puedo empezar desde cero?</span><span class="arr">+</span></div><div class="faq-a"><p>Sí. Muchos de mis alumnos no habían tocado un editor de vídeo en su vida. Te enseño todo desde cero: herramientas de IA, edición, publicación y estrategia. Vas a tu ritmo y yo te guío en cada paso.</p></div></div>
+            <div class="faq-item"><div class="faq-q"><span>Ya tengo canal pero no funciona, ¿me sirve?</span><span class="arr">+</span></div><div class="faq-a"><p>Es exactamente para ti. Analizo tu canal, detecto qué falla (nicho, títulos, miniaturas, retención) y te doy un plan concreto para arreglarlo. La mayoría de canales "muertos" solo necesitan ajustes estratégicos.</p></div></div>
+            <div class="faq-item"><div class="faq-q"><span>Ya probé otros cursos y no me funcionaron</span><span class="arr">+</span></div><div class="faq-a"><p>Normal. Los cursos grabados dan teoría genérica. Esto es mentoría 1 a 1 — trabajo directamente sobre TU canal, con TU nicho y TUS problemas específicos. Más seguimiento diario por chat para que nunca te quedes bloqueado.</p></div></div>
+            <div class="faq-item"><div class="faq-q"><span>€177/mes es mucho para mí</span><span class="arr">+</span></div><div class="faq-a"><p>Entiendo. Pero piénsalo así: ¿cuánto estás perdiendo cada mes sin estrategia? Otras mentorías cobran €1.500 de golpe por 4 llamadas al año. Aquí tienes 2 videollamadas al mes + chat diario por €177. Mis alumnos suelen recuperar la inversión en el primer o segundo mes. Y puedes cancelar cuando quieras.</p></div></div>
+            <div class="faq-item"><div class="faq-q"><span>¿Tengo que mostrar mi cara en los vídeos?</span><span class="arr">+</span></div><div class="faq-a"><p>No. La mayoría de canales que creamos son faceless (sin cara). Usamos IA para generar todo el contenido: guiones, voces, imágenes y edición.</p></div></div>
+            <div class="faq-item"><div class="faq-q"><span>¿Cuánto tiempo hasta ver resultados?</span><span class="arr">+</span></div><div class="faq-a"><p>Depende de tu constancia, pero mis alumnos suelen ver resultados en 2-4 semanas. Lo importante es que desde el día 1 vas con una estrategia clara y alguien que te corrige en tiempo real.</p></div></div>
         </div>
     </div>
 </section>
@@ -898,10 +1162,10 @@
 <!-- FINAL CTA -->
 <section class="final-cta">
     <div class="sec-inner">
-        <div class="sec-label" style="justify-content:center;">No sigas perdiendo tiempo</div>
-        <h2>¿Listo para crear un canal que genere ingresos reales?</h2>
-        <p class="sec-desc" style="margin:0 auto 32px; text-align:center;">Cada día sin estrategia es un día de ingresos que pierdes. Empieza hoy.</p>
-        <a href="#precio" class="btn">Quiero empezar mi mentoría por €100/mes →</a>
+        <div class="sec-label" style="justify-content:center;">No sigas esperando</div>
+        <h2>Cada día sin estrategia es un día de ingresos que pierdes</h2>
+        <p class="sec-desc" style="margin:0 auto 32px; text-align:center;">Mientras lo piensas, otros con menos conocimiento que tú ya están monetizando. La diferencia no es talento — es tener a alguien que te diga exactamente qué hacer.</p>
+        <a href="#precio" class="btn">No quiero seguir perdiendo el tiempo →</a>
         <div class="btn-sub" style="justify-content:center; margin-top:14px;">Sin permanencia · Pago seguro · Resultados desde el primer mes</div>
     </div>
 </section>
@@ -915,7 +1179,7 @@
 
 <!-- STICKY CTA MOBILE -->
 <div class="sticky-cta">
-    <a href="#precio" class="btn">Quiero mi mentoría — €100/mes →</a>
+    <a href="#precio" class="btn">Quiero arreglar mi canal — €177/mes →</a>
 </div>
 
 <script>
