@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan RPM | Mentoría YouTube con IA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* BLUE TRUST PALETTE */
+            --blue-deep: #0B1628;
+            --blue-dark: #0F1D32;
+            --blue-mid: #152742;
+            --blue-accent: #2D7FF9;
+            --blue-light: #5B9FFF;
+            --blue-glow: rgba(45, 127, 249, 0.15);
+
+            /* ORANGE CTA - max contrast against blue */
+            --cta: #FF8C42;
+            --cta-hover: #FF7A25;
+            --cta-glow: rgba(255, 140, 66, 0.3);
+
+            /* GREEN = MONEY / RESULTS */
+            --green: #00D26A;
+            --green-bg: rgba(0, 210, 106, 0.08);
+            --green-border: rgba(0, 210, 106, 0.2);
+
+            /* NEUTRALS */
+            --white: #F0F4F8;
+            --white-soft: #D0D8E4;
+            --gray: #8899B0;
+            --gray-dark: #5A6A80;
+
+            /* RED FOR URGENCY */
+            --red: #FF4D6A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--blue-deep);
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 16px 0;
+            background: rgba(11, 22, 40, 0.9);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(45, 127, 249, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-brand span { color: var(--blue-accent); }
+
+        .nav-cta {
+            background: var(--cta);
+            color: #fff;
+            padding: 10px 26px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.88rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--cta-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px var(--cta-glow);
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 24px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle blue radial glow - trust atmosphere */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(45, 127, 249, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 180px;
+            background: linear-gradient(to top, var(--blue-deep), transparent);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 56px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--green-bg);
+            border: 1px solid var(--green-border);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--green);
+            margin-bottom: 24px;
+            animation: fadeUp 0.7s ease both;
+        }
+
+        .hero-badge .dot {
+            width: 8px; height: 8px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.6rem, 5vw, 3.8rem);
+            font-weight: 900;
+            line-height: 1.08;
+            margin-bottom: 22px;
+            letter-spacing: -1px;
+            animation: fadeUp 0.7s ease 0.1s both;
+        }
+
+        .hero h1 .hl {
+            color: var(--blue-light);
+            position: relative;
+        }
+
+        .hero-sub {
+            font-size: 1.12rem;
+            color: var(--white-soft);
+            max-width: 500px;
+            margin-bottom: 12px;
+            animation: fadeUp 0.7s ease 0.2s both;
+        }
+
+        /* TRUST SIGNALS - psychological anchoring */
+        .trust-row {
+            display: flex;
+            gap: 28px;
+            margin: 28px 0;
+            animation: fadeUp 0.7s ease 0.3s both;
+        }
+
+        .trust-item {}
+
+        .trust-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--blue-light);
+        }
+
+        .trust-label {
+            font-size: 0.78rem;
+            color: var(--gray);
+            margin-top: 2px;
+        }
+
+        .hero-cta-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 32px;
+            animation: fadeUp 0.7s ease 0.4s both;
+        }
+
+        /* ORANGE CTA - high contrast = more clicks */
+        .btn-main {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--cta);
+            color: #fff;
+            padding: 18px 40px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            letter-spacing: -0.2px;
+        }
+
+        .btn-main:hover {
+            background: var(--cta-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px var(--cta-glow);
+        }
+
+        .btn-note {
+            font-size: 0.82rem;
+            color: var(--gray);
+            text-align: center;
+        }
+
+        .btn-note svg { vertical-align: middle; margin-right: 4px; }
+
+        /* HERO IMAGE */
+        .hero-visual {
+            position: relative;
+            animation: fadeUp 0.8s ease 0.3s both;
+        }
+
+        .hero-img-card {
+            background: var(--blue-dark);
+            border-radius: 22px;
+            overflow: hidden;
+            border: 1px solid rgba(45, 127, 249, 0.12);
+        }
+
+        .hero-img-placeholder {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: linear-gradient(160deg, var(--blue-dark), var(--blue-mid));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            color: var(--gray);
+        }
+
+        .hero-img-placeholder .big { font-size: 3.5rem; opacity: 0.5; }
+
+        /* FLOATING CARDS - social proof anchoring */
+        .float-card {
+            position: absolute;
+            background: rgba(15, 29, 50, 0.92);
+            border: 1px solid rgba(45, 127, 249, 0.15);
+            border-radius: 14px;
+            padding: 14px 18px;
+            backdrop-filter: blur(16px);
+            z-index: 3;
+        }
+
+        .float-card.money {
+            bottom: -16px;
+            left: -24px;
+            animation: floaty 4s ease-in-out infinite;
+        }
+
+        .float-card.money .amt {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--green);
+        }
+
+        .float-card.money .lbl {
+            font-size: 0.72rem;
+            color: var(--gray);
+        }
+
+        .float-card.badge {
+            top: 28px;
+            right: -16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: floaty 4s ease-in-out infinite 1.5s;
+        }
+
+        .float-card.badge .icon {
+            width: 30px; height: 30px;
+            background: var(--blue-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .float-card.badge .txt { font-size: 0.85rem; font-weight: 600; }
+        .float-card.badge .sub { font-size: 0.7rem; color: var(--gray); }
+
+        /* ========== PROOF BAR ========== */
+        .proof-bar {
+            background: var(--blue-dark);
+            border-top: 1px solid rgba(45, 127, 249, 0.06);
+            border-bottom: 1px solid rgba(45, 127, 249, 0.06);
+            padding: 36px 24px;
+        }
+
+        .proof-bar-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            text-align: center;
+        }
+
+        .pb-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--blue-light);
+            margin-bottom: 4px;
+        }
+
+        .pb-text { font-size: 0.82rem; color: var(--gray); }
+
+        /* ========== SECTION DEFAULTS ========== */
+        .sec { padding: 96px 24px; }
+
+        .sec-inner { max-width: 1100px; margin: 0 auto; }
+
+        .sec-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--blue-accent);
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 14px;
+        }
+
+        .sec-tag::before {
+            content: '';
+            width: 22px;
+            height: 2px;
+            background: var(--blue-accent);
+        }
+
+        .sec-title {
+            font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.12;
+            letter-spacing: -0.5px;
+        }
+
+        .sec-sub {
+            font-size: 1.02rem;
+            color: var(--white-soft);
+            max-width: 560px;
+            margin-bottom: 44px;
+        }
+
+        /* ========== TESTIMONIALS ========== */
+        .testi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .testi-card {
+            background: var(--blue-dark);
+            border: 1px solid rgba(45, 127, 249, 0.08);
+            border-radius: 18px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .testi-card:hover {
+            border-color: rgba(45, 127, 249, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .testi-card.feat {
+            border-color: rgba(45, 127, 249, 0.25);
+            background: linear-gradient(155deg, var(--blue-dark), rgba(45, 127, 249, 0.04));
+        }
+
+        .testi-stars { color: var(--cta); font-size: 0.85rem; margin-bottom: 14px; letter-spacing: 2px; }
+
+        /* GREEN result box = money association */
+        .testi-result {
+            background: var(--green-bg);
+            border: 1px solid var(--green-border);
+            border-radius: 10px;
+            padding: 11px 15px;
+            margin-bottom: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            color: var(--green);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .testi-text {
+            font-size: 0.95rem;
+            color: var(--white-soft);
+            margin-bottom: 18px;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .testi-author { display: flex; align-items: center; gap: 12px; }
+
+        .testi-avatar {
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--blue-accent), var(--blue-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #fff;
+            font-size: 0.85rem;
+        }
+
+        .testi-name { font-weight: 600; font-size: 0.92rem; }
+        .testi-detail { font-size: 0.78rem; color: var(--gray); }
+
+        /* ========== FEATURES ========== */
+        .feat-sec { background: var(--blue-dark); }
+
+        .feat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 18px;
+        }
+
+        .feat-card {
+            background: var(--blue-mid);
+            border: 1px solid rgba(45, 127, 249, 0.06);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .feat-card:hover {
+            border-color: rgba(45, 127, 249, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .feat-icon {
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+            background: var(--blue-glow);
+        }
+
+        .feat-title { font-weight: 700; font-size: 1.05rem; margin-bottom: 6px; }
+        .feat-desc { font-size: 0.88rem; color: var(--gray); line-height: 1.6; }
+
+        /* ========== ABOUT ========== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.65fr 1fr;
+            gap: 56px;
+            align-items: center;
+        }
+
+        .about-img {
+            background: var(--blue-dark);
+            border-radius: 22px;
+            overflow: hidden;
+            border: 1px solid rgba(45, 127, 249, 0.1);
+        }
+
+        .about-img-ph {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: linear-gradient(160deg, var(--blue-dark), var(--blue-mid));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: var(--gray);
+        }
+
+        .about-text {
+            font-size: 1.02rem;
+            color: var(--white-soft);
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        .about-stat {
+            background: var(--blue-mid);
+            border-radius: 14px;
+            padding: 18px;
+            text-align: center;
+            border: 1px solid rgba(45, 127, 249, 0.08);
+        }
+
+        .about-stat-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--blue-light);
+        }
+
+        .about-stat-lbl { font-size: 0.75rem; color: var(--gray); margin-top: 3px; }
+
+        /* ========== PRICING ========== */
+        .price-sec {
+            background: var(--blue-dark);
+            position: relative;
+        }
+
+        .price-sec::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(45, 127, 249, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .price-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            max-width: 760px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .price-card {
+            background: var(--blue-mid);
+            border: 1px solid rgba(45, 127, 249, 0.1);
+            border-radius: 22px;
+            padding: 36px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .price-card.pop {
+            border-color: var(--cta);
+            background: linear-gradient(165deg, var(--blue-mid), rgba(255, 140, 66, 0.04));
+            position: relative;
+            transform: scale(1.03);
+        }
+
+        /* URGENCY badge - red = act now */
+        .price-card.pop::before {
+            content: '🔥 MÁS ELEGIDO';
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--cta);
+            color: #fff;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .price-card:hover { transform: translateY(-4px); }
+        .price-card.pop:hover { transform: scale(1.03) translateY(-4px); }
+
+        .price-label { font-weight: 600; font-size: 0.95rem; color: var(--white-soft); margin-bottom: 8px; }
+
+        .price-amount {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 4px;
+            letter-spacing: -1px;
+        }
+
+        .price-amount .cur { font-size: 1.4rem; vertical-align: top; margin-right: 2px; }
+        .price-amount .per { font-size: 0.95rem; font-weight: 400; color: var(--gray); }
+
+        .price-save {
+            background: var(--green-bg);
+            color: var(--green);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 10px 0 22px;
+        }
+
+        .price-desc { font-size: 0.88rem; color: var(--gray); margin-bottom: 24px; }
+
+        .price-feats { text-align: left; margin-bottom: 28px; }
+
+        .price-feat {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 9px 0;
+            font-size: 0.9rem;
+            color: var(--white-soft);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+
+        .price-feat:last-child { border-bottom: none; }
+        .price-feat .ck { color: var(--green); font-weight: 700; margin-top: 2px; }
+
+        /* SECURITY signals below CTA */
+        .price-secure {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.78rem;
+            color: var(--gray);
+            margin-top: 14px;
+        }
+
+        /* ========== FAQ ========== */
+        .faq-list { max-width: 680px; margin: 0 auto; }
+
+        .faq-item { border-bottom: 1px solid rgba(45, 127, 249, 0.08); }
+
+        .faq-q {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 0;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.02rem;
+            transition: color 0.3s ease;
+            user-select: none;
+        }
+
+        .faq-q:hover { color: var(--blue-light); }
+
+        .faq-q .arr {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            color: var(--gray);
+        }
+
+        .faq-item.open .faq-q .arr { transform: rotate(45deg); color: var(--blue-accent); }
+
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .faq-item.open .faq-a { max-height: 300px; padding-bottom: 22px; }
+
+        .faq-a p { font-size: 0.92rem; color: var(--white-soft); line-height: 1.7; }
+
+        /* ========== FINAL CTA ========== */
+        .final-cta {
+            text-align: center;
+            padding: 96px 24px;
+            position: relative;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 350px;
+            background: radial-gradient(ellipse, rgba(255, 140, 66, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .final-cta .sec-title { max-width: 560px; margin: 0 auto 20px; }
+        .final-cta .sec-sub { margin: 0 auto 36px; text-align: center; }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--blue-dark);
+            padding: 36px 24px;
+            text-align: center;
+            border-top: 1px solid rgba(45, 127, 249, 0.06);
+        }
+
+        .footer .brand { font-weight: 800; color: var(--white); font-size: 1.1rem; margin-bottom: 6px; }
+        .footer .brand span { color: var(--blue-accent); }
+        .footer p { font-size: 0.78rem; color: var(--gray); }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(28px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.35; }
+        }
+
+        @keyframes floaty {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-7px); }
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .hero-inner { grid-template-columns: 1fr; text-align: center; }
+            .hero-sub { margin: 0 auto 12px; }
+            .trust-row { justify-content: center; }
+            .hero-visual { max-width: 320px; margin: 0 auto; }
+            .float-card.money { left: -8px; }
+            .float-card.badge { right: -8px; }
+            .proof-bar-inner { grid-template-columns: repeat(2, 1fr); }
+            .about-grid { grid-template-columns: 1fr; text-align: center; }
+            .about-img { max-width: 280px; margin: 0 auto; }
+            .testi-grid, .feat-grid { grid-template-columns: 1fr; }
+            .price-cards { grid-template-columns: 1fr; max-width: 400px; }
+            .price-card.pop { transform: none; }
+            .price-card.pop:hover { transform: translateY(-4px); }
+            .sec { padding: 68px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-inner">
+        <a href="#" class="nav-brand">Juan <span>RPM</span></a>
+        <a href="#precio" class="nav-cta">Empezar Mentoría →</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-inner">
+        <div>
+            <div class="hero-badge">
+                <span class="dot"></span>
+                Plazas limitadas — Mentoría activa
+            </div>
+            <h1>Crea canales de YouTube <span class="hl">rentables con IA</span> y genera ingresos reales</h1>
+            <p class="hero-sub">Mentoría 1 a 1 donde te llevo de la mano para construir, optimizar y monetizar tu canal. Sin teoría genérica. Solo estrategia real que funciona.</p>
+
+            <div class="trust-row">
+                <div class="trust-item">
+                    <div class="trust-num">9 días</div>
+                    <div class="trust-label">Récord monetización</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-num">+3 años</div>
+                    <div class="trust-label">De experiencia</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-num">+50</div>
+                    <div class="trust-label">Canales creados</div>
+                </div>
+            </div>
+
+            <div class="hero-cta-wrap">
+                <a href="#precio" class="btn-main">Quiero mi mentoría →</a>
+                <span class="btn-note">🔒 Pago seguro · Sin permanencia · Cancela cuando quieras</span>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="hero-img-card">
+                <div class="hero-img-placeholder">
+                    <span class="big">📸</span>
+                    <span>Tu foto aquí</span>
+                    <span style="font-size:0.72rem; opacity:0.5">Sube tu foto profesional</span>
+                </div>
+            </div>
+            <div class="float-card money">
+                <div class="amt">+$2,847</div>
+                <div class="lbl">Ingresos este mes</div>
+            </div>
+            <div class="float-card badge">
+                <div class="icon">✓</div>
+                <div>
+                    <div class="txt">Monetizado</div>
+                    <div class="sub">en 9 días</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+    <div class="proof-bar-inner">
+        <div><div class="pb-num">+50</div><div class="pb-text">Canales creados</div></div>
+        <div><div class="pb-num">9 días</div><div class="pb-text">Monetización más rápida</div></div>
+        <div><div class="pb-num">+3 años</div><div class="pb-text">Experiencia real</div></div>
+        <div><div class="pb-num">100%</div><div class="pb-text">Alumnos satisfechos</div></div>
+    </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="sec">
+    <div class="sec-inner">
+        <div class="sec-tag">Resultados reales</div>
+        <h2 class="sec-title">Lo que dicen mis alumnos</h2>
+        <p class="sec-sub">No me creas a mí. Mira lo que han conseguido ellos.</p>
+        <div class="testi-grid">
+            <div class="testi-card feat">
+                <div class="testi-stars">★★★★★</div>
+                <div class="testi-result">✓ Canal monetizado en 3 semanas</div>
+                <p class="testi-text">"Llevaba meses intentando monetizar por mi cuenta. Con Juan en 3 semanas ya estaba generando ingresos. La estrategia de nichos fue un cambio total."</p>
+                <div class="testi-author">
+                    <div class="testi-avatar">MA</div>
+                    <div><div class="testi-name">Miguel A.</div><div class="testi-detail">Canal de audiobooks · España</div></div>
+                </div>
+            </div>
+            <div class="testi-card">
+                <div class="testi-stars">★★★★★</div>
+                <div class="testi-result">✓ De €0 a €800/mes en 2 meses</div>
+                <p class="testi-text">"Juan te dice exactamente qué hacer. Me analizó el canal, me dio los cambios y en 2 meses ya generaba €800/mes. Directo y sin rodeos."</p>
+                <div class="testi-author">
+                    <div class="testi-avatar">CR</div>
+                    <div><div class="testi-name">Carlos R.</div><div class="testi-detail">Canal faceless · México</div></div>
+                </div>
+            </div>
+            <div class="testi-card">
+                <div class="testi-stars">★★★★★</div>
+                <div class="testi-result">✓ 3 canales monetizados</div>
+                <p class="testi-text">"Aprendí a escalar. Ya no es un solo canal, tengo 3 funcionando. El seguimiento diario por chat es lo que marca la diferencia."</p>
+                <div class="testi-author">
+                    <div class="testi-avatar">LP</div>
+                    <div><div class="testi-name">Laura P.</div><div class="testi-detail">3 canales con IA · Colombia</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="sec feat-sec">
+    <div class="sec-inner">
+        <div class="sec-tag">Qué incluye</div>
+        <h2 class="sec-title">Todo lo que vas a conseguir</h2>
+        <p class="sec-sub">No es un curso grabado. Es mentoría real, personalizada a tu canal.</p>
+        <div class="feat-grid">
+            <div class="feat-card">
+                <div class="feat-icon">📹</div>
+                <div class="feat-title">Sesión 1 a 1 en videollamada</div>
+                <div class="feat-desc">60-90 minutos conmigo trabajando directamente sobre TU canal con estrategia personalizada.</div>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon">🔍</div>
+                <div class="feat-title">Revisión completa de tu canal</div>
+                <div class="feat-desc">Analizo contenidos, títulos, miniaturas y retención. Te digo exactamente qué cambiar.</div>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon">🚀</div>
+                <div class="feat-title">Estrategia de monetización</div>
+                <div class="feat-desc">Plan paso a paso para monetizar rápido. Los mismos métodos que uso en mis canales.</div>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon">🤖</div>
+                <div class="feat-title">Automatización con IA</div>
+                <div class="feat-desc">Crea contenido automatizado con IA. Produce más, en menos tiempo, con mejor calidad.</div>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon">💬</div>
+                <div class="feat-title">Seguimiento diario por chat</div>
+                <div class="feat-desc">Acceso directo a mí todos los días. Resuelves dudas al instante, nunca te quedas bloqueado.</div>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon">🎁</div>
+                <div class="feat-title">Ebook de regalo</div>
+                <div class="feat-desc">Mi Guía completa para monetizar en un mes. El mismo método validado con +50 canales.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec">
+    <div class="sec-inner">
+        <div class="about-grid">
+            <div class="about-img">
+                <div class="about-img-ph">
+                    <span style="font-size:3rem">📸</span>
+                    <span>Tu foto aquí</span>
+                </div>
+            </div>
+            <div>
+                <div class="sec-tag">Sobre mí</div>
+                <h2 class="sec-title">Soy Juan RPM</h2>
+                <p class="about-text">Llevo más de 3 años creando y monetizando canales de YouTube con inteligencia artificial. He construido más de 50 canales, y mi récord personal es monetizar uno en solo 9 días.</p>
+                <p class="about-text">No soy un gurú que vende humo. Soy un creador activo que sigue creando canales cada día. Todo lo que te enseño es lo que yo mismo hago y me funciona.</p>
+                <p class="about-text">Creé esta mentoría porque estaba cansado de ver gente perdida con canales muertos, siguiendo consejos genéricos que no funcionan. Aquí trabajamos con datos, estrategia y con IA.</p>
+                <div class="about-stats">
+                    <div class="about-stat"><div class="about-stat-num">+50</div><div class="about-stat-lbl">Canales creados</div></div>
+                    <div class="about-stat"><div class="about-stat-num">9 días</div><div class="about-stat-lbl">Récord monetización</div></div>
+                    <div class="about-stat"><div class="about-stat-num">+3 años</div><div class="about-stat-lbl">Experiencia</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec price-sec" id="precio">
+    <div class="sec-inner" style="text-align:center;">
+        <div class="sec-tag" style="justify-content:center;">Precio</div>
+        <h2 class="sec-title" style="max-width:480px; margin:0 auto 16px;">Invierte en tu futuro como creador</h2>
+        <p class="sec-sub" style="margin:0 auto 44px; text-align:center;">Elige el plan que mejor se adapte a ti. Sin permanencia.</p>
+
+        <div class="price-cards">
+            <!-- MONTHLY - POPULAR -->
+            <div class="price-card pop">
+                <div class="price-label">Pago mensual</div>
+                <div class="price-amount"><span class="cur">€</span>100<span class="per">/mes</span></div>
+                <div class="price-desc">Paga mes a mes, sin compromisos.</div>
+                <div class="price-feats">
+                    <div class="price-feat"><span class="ck">✓</span><span>Sesiones 1 a 1 en videollamada</span></div>
+                    <div class="price-feat"><span class="ck">✓</span><span>Revisión completa de tu canal</span></div>
+                    <div class="price-feat"><span class="ck">✓</span><span>Estrategia de monetización personalizada</span></div>
+                    <div class="price-feat"><span class="ck">✓</span><span>Automatización con IA</span></div>
+                    <div class="price-feat"><span class="ck">✓</span><span>Seguimiento diario por chat</span></div>
+                    <div class="price-feat"><span class="ck">✓</span><span>Ebook de regalo valorado en €29</span></div>
+                </div>
+                <a href="https://payhip.com/order?link=XSR19&pricing_plan=3ZGX8ZO5Gq" class="btn-main" style="width:100%;">Empezar mentoría →</a>
+                <div class="price-secure">🔒 Pago seguro con PayPal o tarjeta</div>
+            </div>
+
+            <!-- QUARTERLY -->
+            <div class="price-card">
+                <div class="price-label">Pago trimestral</div>
+                <div class="price-amount"><span class="cur">€</span>249</div>
+                <div class="price-save">Ahorras €51 — Paga 3 meses por el precio de 2.5</div>
+                <div class="price-desc">Para los que van en serio.</div>
+                <div class="price-feats">
+                    <div class="price-feat"><span class="ck">✓</span><span>Todo lo del plan mensual</span></div>
+                    <div class="price-feat"><span class="ck">✓</span><span>3 meses de acceso garantizado</span></div>
+                    <div class="price-feat"><span class="ck">✓</span><span>Sesión extra de estrategia avanzada</span></div>
+                    <div class="price-feat"><span class="ck">✓</span><span>Acceso prioritario por WhatsApp</span></div>
+                </div>
+                <a href="https://payhip.com/order?link=XSR19&pricing_plan=3ZGX8ZO5Gq" class="btn-main" style="width:100%; background: var(--blue-accent);">Elegir trimestral →</a>
+                <div class="price-secure">🔒 Pago seguro con PayPal o tarjeta</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec">
+    <div class="sec-inner">
+        <div style="text-align:center;">
+            <div class="sec-tag" style="justify-content:center;">Preguntas frecuentes</div>
+            <h2 class="sec-title" style="max-width:480px; margin:0 auto 44px;">Resolvemos tus dudas</h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-q"><span>¿Necesito experiencia previa en YouTube?</span><span class="arr">+</span></div>
+                <div class="faq-a"><p>No. La mentoría funciona tanto para principiantes como para personas con canal. Empezamos desde tu nivel actual.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q"><span>¿Cuánto tiempo hasta ver resultados?</span><span class="arr">+</span></div>
+                <div class="faq-a"><p>Depende de tu constancia, pero mis alumnos suelen ver resultados en 2-4 semanas. Mi récord es monetizar un canal en 9 días.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q"><span>¿Tengo que mostrar mi cara en los vídeos?</span><span class="arr">+</span></div>
+                <div class="faq-a"><p>No. La mayoría de canales que creamos son faceless. Usamos IA para generar contenido automatizado.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q"><span>¿Puedo cancelar en cualquier momento?</span><span class="arr">+</span></div>
+                <div class="faq-a"><p>Sí. No hay permanencia. Cancelas tu suscripción cuando quieras sin ningún coste adicional.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q"><span>¿Cómo son las sesiones?</span><span class="arr">+</span></div>
+                <div class="faq-a"><p>Por videollamada o chat, de 60 a 90 minutos. Trabajamos sobre tu canal con estrategias personalizadas, más seguimiento diario por chat.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q"><span>¿Qué herramientas de IA se usan?</span><span class="arr">+</span></div>
+                <div class="faq-a"><p>Te enseño las mejores herramientas para crear contenido automatizado: guiones, voces, imágenes, edición y publicación. Todo lo que necesitas.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+    <div class="sec-inner">
+        <div class="sec-tag" style="justify-content:center;">No sigas perdiendo tiempo</div>
+        <h2 class="sec-title">¿Listo para crear un canal que genere ingresos reales?</h2>
+        <p class="sec-sub">Cada día sin estrategia es un día de ingresos que pierdes. Empieza hoy.</p>
+        <a href="#precio" class="btn-main">Empezar mi mentoría por €100/mes →</a>
+        <div style="margin-top:14px;"><span class="btn-note">Sin permanencia · Pago seguro · Resultados desde el primer mes</span></div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="brand">Juan <span>RPM</span></div>
+    <p>© 2026 Juan RPM. Todos los derechos reservados.</p>
+    <p style="margin-top:6px;">Esta mentoría es un servicio de asesoría digital. Los resultados dependen de tu aplicación y constancia.</p>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const open = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!open) item.classList.add('open');
+    });
+});
+
+window.addEventListener('scroll', () => {
+    const nav = document.querySelector('.navbar');
+    nav.style.padding = window.scrollY > 50 ? '10px 0' : '16px 0';
+});
+
+const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) e.target.style.animation = 'fadeUp 0.5s ease forwards';
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.testi-card, .feat-card, .price-card, .faq-item').forEach(el => {
+    el.style.opacity = '0';
+    obs.observe(el);
+});
+</script>
+
+</body>
+</html>
